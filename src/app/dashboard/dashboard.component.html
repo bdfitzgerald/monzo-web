@@ -1,0 +1,140 @@
+<td-layout-nav logo="assets:monzo" navigationRoute="/">
+  <div td-toolbar-content layout="row" layout-align="center center" flex>
+    <span flex></span>
+   </div>
+  <div layout-gt-sm="row" tdMediaToggle="gt-xs" [mediaClasses]="['push-sm']">
+    <div flex-gt-sm="60">
+
+      <md-card>
+        <md-card-title>Your Spending</md-card-title>
+        <md-card-subtitle>Spending compared to budget</md-card-subtitle>
+        <md-divider></md-divider>
+        <md-card-content>
+          <ngx-charts-area-chart
+                  [scheme]="colorScheme"
+                  [results]="multi"
+                  [gradient]="gradient"
+                  [xAxis]="showXAxis"
+                  [yAxis]="showYAxis"
+                  [legend]="showLegend"
+                  [showXAxisLabel]="showXAxisLabel"
+                  [showYAxisLabel]="showYAxisLabel"
+                  [xAxisLabel]="xAxisLabel"
+                  [yAxisLabel]="yAxisLabel"
+                  [autoScale]="autoScale">
+          </ngx-charts-area-chart>
+        </md-card-content>
+      </md-card>
+
+      <div layout="row" class="md-margin-tb">
+        <div flex="33" layout="column">
+
+          <md-card class="md-card-colored" flex>
+            <md-card-content class="text-center">
+              <md-icon class="icon tc-light-blue-500">account_balance</md-icon>
+              <div class="md-headline">{{ 64.54 | currency:'GBP':true }}</div>
+              <div layout="column">
+                <div class="md-subhead">Current Balance</div>
+              </div>
+            </md-card-content>
+          </md-card>
+
+        </div>
+        <div flex="33" layout="column">
+
+          <a [routerLink]="['/transactions']">
+            <md-card class="md-card-colored" flex>
+              <md-card-content class="text-center">
+                <md-icon class="icon tc-amber-800">credit_card</md-icon>
+                <div class="md-headline">{{ '17.28'| currency:'GBP':true }}</div>
+                <div layout="column">
+                  <div class="md-subhead">Today's Spend</div>
+                </div>
+              </md-card-content>
+            </md-card>
+          </a>
+
+        </div>
+        <div flex="33" layout="column">
+
+          <a [routerLink]="['/spending']">
+            <md-card class="md-card-colored" flex>
+              <md-card-content class="text-center">
+                <md-icon class="icon tc-green-600">date_range</md-icon>
+                <div class="md-headline">{{ '245.94'| currency:'GBP':true }}</div>
+                <div layout="column">
+                  <div class="md-subhead">Monthly Spend</div>
+                </div>
+              </md-card-content>
+            </md-card>
+          </a>
+
+        </div>
+        <div flex="33" layout="column">
+
+          <md-card class="md-card-colored" flex>
+            <md-card-content class="text-center">
+              <md-icon class="icon tc-light-blue-500">account_balance_wallet</md-icon>
+              <div class="md-headline">{{ '345.00'| currency:'GBP':true }}</div>
+              <div layout="column">
+                <div class="md-subhead">Monthly Budget</div>
+              </div>
+            </md-card-content>
+          </md-card>
+
+        </div>
+      </div>
+      <div layout="row">
+        <div flex="100" layout="column">
+
+          <md-card>
+            <md-card-title>Deposits</md-card-title>
+            <md-card-subtitle>Recent deposits received</md-card-subtitle>
+            <md-divider></md-divider>
+            <md-nav-list class="will-load item-list">
+              <transaction-item *ngFor="let transaction of deposits" [transaction]="transaction"></transaction-item>
+            </md-nav-list>
+            <md-card-actions>
+              <a md-button color="accent" class="text-upper" [routerLink]="['/transactions']">
+                <span>View More</span>
+              </a>
+            </md-card-actions>
+          </md-card>
+
+        </div>
+      </div>
+    </div>
+    <div flex-gt-sm="40">
+
+      <md-card>
+        <md-card-title>Recent Transactions</md-card-title>
+        <md-card-subtitle>Recent transactions you've made</md-card-subtitle>
+        <md-divider></md-divider>
+        <md-nav-list class="will-load item-list">
+          <transaction-item *ngFor="let transaction of transactions" [transaction]="transaction"></transaction-item>
+        </md-nav-list>
+        <md-card-actions>
+          <a md-button color="accent" class="text-upper" [routerLink]="['/transactions']">
+            <span>View More</span>
+          </a>
+        </md-card-actions>
+      </md-card>
+
+      <md-card id="dashboard-favorites-card" class="push-top">
+        <md-card-title>Spending</md-card-title>
+        <md-card-subtitle>Your spending categories this month</md-card-subtitle>
+        <md-divider></md-divider>
+        <md-nav-list class="will-load favorite-list">
+          <transaction-item *ngFor="let transaction of spending" [transaction]="transaction"></transaction-item>
+        </md-nav-list>
+        <md-divider></md-divider>
+        <md-card-actions>
+          <a md-button color="accent" class="text-upper" [routerLink]="['/spending']">
+            <span>View More</span>
+          </a>
+        </md-card-actions>
+      </md-card>
+
+    </div>
+  </div>
+</td-layout-nav>

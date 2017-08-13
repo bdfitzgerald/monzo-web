@@ -1,0 +1,50 @@
+<td-layout-nav logo="assets:monzo" navigationRoute="/">
+<td-layout-card-over cardTitle="{{transaction.merchant.name}}" cardSubtitle="{{transaction.merchant.address.short_formatted}}" cardWidth="75">
+  <img class="logo" [src]="transaction.merchant.logo" >
+  <agm-map
+    [latitude]="transaction.merchant.address.latitude"
+    [longitude]="transaction.merchant.address.longitude"
+    [zoom]="18"
+    [scrollwheel]="false">
+    <agm-marker
+      [latitude]="transaction.merchant.address.latitude"
+      [longitude]="transaction.merchant.address.longitude">
+    </agm-marker>
+  </agm-map>
+  <md-card-content>
+    <div class="block">
+      <h3 class="pull-left"> {{transaction.created | date:'EEEE d MMMM, H:MM'}} </h3>
+      <a class="pull-right" md-raised-button color="primary" (click)="back()">Back</a>
+    </div>
+    <md-nav-list>
+      <md-list-item layout-align="row" class="price-list coloured">
+        <md-icon md-list-avatar class="bgc-green-600 tc-white"><img class="transaction-icon" [src]="transaction.merchant.metadata.foursquare_category_icon"></md-icon>
+        <h3 md-line> {{transaction.category}} </h3>
+        <h4 md-line> {{transaction.local_amount/-100 | currency:'GBP':true }} </h4>
+      </md-list-item>
+      <md-list-item layout-align="row" class="coloured">
+        <md-icon md-list-avatar class="bgc-grey-600 tc-white">attachment</md-icon>
+        <h3 md-line> Add Photo Or Note </h3>
+      </md-list-item>
+      <h3 md-subheader>Your {{transaction.merchant.name}} history</h3>
+      <md-list-item layout-align="row" class="price-list">
+        <h3 md-line> Number of transactions </h3>
+        <h4 md-line> 2 </h4>
+      </md-list-item>
+      <md-divider></md-divider>
+      <md-list-item layout-align="row" class="price-list">
+        <h3 md-line> Average Spend </h3>
+        <h4 md-line> {{-2646/-100 | currency:'GBP':true }} </h4>
+      </md-list-item>
+      <md-divider></md-divider>
+      <md-list-item layout-align="row" class="price-list">
+        <h3 md-line> Total Spent </h3>
+        <h4 md-line> {{-5298/-100 | currency:'GBP':true }} </h4>
+      </md-list-item>
+      <md-divider></md-divider>
+      <h3 md-subheader> {{transaction.description}} </h3>
+    </md-nav-list>
+  </md-card-content>
+
+</td-layout-card-over>
+</td-layout-nav>

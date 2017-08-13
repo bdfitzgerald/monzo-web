@@ -1,0 +1,33 @@
+<td-layout-nav logo="assets:monzo" navigationRoute="/">
+
+  <div td-toolbar-content layout="row" layout-align="center center" flex>
+    <span flex></span>
+  </div>
+  <div layout="row">
+    <div layout="column" flex="100">
+      <md-card *ngFor="let month of months">
+        <md-card-title>{{month.month | date:'MMMM yy'}}</md-card-title>
+        <md-divider></md-divider>
+        <div layout="row">
+          <div layout="column" flex="60">
+              <md-nav-list class="will-load item-list">
+                <md-list-item layout-align="row" class="price-list" *ngFor="let category of month.categories">
+                  <md-icon md-list-avatar class="bgc-green-600 tc-white">{{category.icon}}</md-icon>
+                  <h3 md-line> {{category.title}} </h3>
+                  <h4 md-line> {{category.spent | currency:'GBP':true }} </h4>
+                </md-list-item>
+            </md-nav-list>
+          </div>
+          <div layout="column" flex="40">
+            <ngx-charts-number-card
+              [scheme]="month.scheme"
+              [results]="month.budget"
+              flex>
+            </ngx-charts-number-card>
+          </div>
+        </div>
+      </md-card>
+    </div>
+  </div>
+
+</td-layout-nav>

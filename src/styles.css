@@ -1,1 +1,114 @@
 /* You can add global styles to this file, and also import other style files */
+.mat-primary {
+    background: #14233c!important;
+}
+
+.ngx-charts-outer.ng-trigger.ng-trigger-animationState {
+    overflow: hidden;
+    padding: 1.22rem;
+}
+
+.md-margin-tb {
+    margin: 0.6rem 0;
+}
+
+.mat-nav-list .mat-list-text h4.mat-line {
+    float: right;
+}
+
+.mat-nav-list .mat-list-text h3.mat-line {
+    float: left;
+    width: 70%;
+    text-transform: capitalize;
+}
+
+.mat-nav-list .coloured .mat-list-text h4.mat-line {
+    font-size: 1.4rem!important;
+    font-weight: bold;
+    color: #03a9f4;
+    font-size: 1.4rem!important;
+}
+
+.mat-nav-list .coloured .mat-list-text h3.mat-line {
+    font-weight: bold;
+    color: #14233c;
+}
+
+.mat-nav-list .mat-list-text p.mat-line {
+    width: 80%;
+}
+
+.price-list.mat-list-item .mat-list-text {
+    display: block!important;
+}
+
+.pull-left {
+    float: left;
+}
+
+.pull-right {
+    float: right;
+}
+
+.mat-tab-labels {
+    background: #03A9F4;
+}
+
+.mat-tab-labels .mat-tab-label,
+.mat-tab-labels .mat-tab-link {
+    color: #FFF;
+}
+
+.two-tabs .mat-tab-label {
+    width: 50%
+}
+
+.three-tabs .mat-tab-label {
+    width: 33%
+}
+
+.mat-tab-label.mat-tab-label-active {
+    opacity: 1!important;
+}
+
+html .mat-card.has-scrollable {
+    padding-bottom: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+    padding: 2px;
+    margin: 2px;
+    background-color: transparent;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    background-color: transparent;
+    right: 100px;
+}
+
+::-webkit-scrollbar-thumb {
+    padding: 2px;
+    border-radius: 2px;
+    background-color: rgba( 171, 171, 171, 0.6);
+}
+
+.content.md-content {
+    top: -0.1rem;
+}
+
+.ngx-charts-outer.ng-trigger.ng-trigger-animationState {
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+agm-map.sebm-google-map-container {
+    height: 300px;
+}
+
+.transaction-icon {
+    float: left;
+    width: 32px;
+}

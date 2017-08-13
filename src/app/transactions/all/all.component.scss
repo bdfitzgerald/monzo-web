@@ -1,0 +1,12 @@
+.md-card{
+  padding-bottom: 1px;
+}
+.scrollable {
+  overflow-y: scroll;
+  max-height: calc(100vh - 265px);
+  margin: 0.5rem 0.5rem 0 0;
+}
+
+.card-header {
+  overflow: hidden;
+}

@@ -1,0 +1,8 @@
+<a [routerLink]="['/transactions/1']" *ngIf="transaction.include_in_spending">
+  <md-list-item layout-align="row" class="price-list coloured">
+  
+    <h3 md-line> {{transaction.merchant.name}} </h3>
+    <h4 md-line> {{transaction.local_amount/-100 | currency:'GBP':true }} </h4>
+    <p md-line> {{transaction.notes}} </p>
+  </md-list-item>
+</a>
