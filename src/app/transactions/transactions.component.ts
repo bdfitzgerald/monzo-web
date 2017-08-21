@@ -1,14 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { ITdDataTableColumn } from '@covalent/core';
+import { Component, OnInit } from '@angular/core'
 
 @Component({
   selector: 'app-transactions',
   templateUrl: './transactions.component.html',
   styleUrls: ['./transactions.component.scss']
 })
-export class TransactionsContainer implements OnInit {
+export class TransactionsComponent implements OnInit {
 
-	index: any;
+  index: any;
 
   constructor() { }
 
@@ -16,8 +15,7 @@ export class TransactionsContainer implements OnInit {
   }
 
   selected(current) {
-		console.log(current);
-		this.index = current;
-	}
+    this.index = current;
+  }
 
 }

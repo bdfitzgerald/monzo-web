@@ -10,7 +10,7 @@
       </div>
       <md-divider></md-divider>
       <div #scrollable class="scrollable">
-        <md-nav-list *tdLoading="'all'; mode:'indeterminate'; type:'circle'; strategy:'replace'; color:'accent'">
+        <md-nav-list *tdLoading="'expenditures'; mode:'indeterminate'; type:'circle'; strategy:'replace'; color:'accent'">
           <app-transaction-item *ngFor="let transaction of transactions" [transaction]="transaction"></app-transaction-item>
         </md-nav-list>
       </div>

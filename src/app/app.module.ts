@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule }  from '@angular/platform-browser';
+import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterModule, Routes } from '@angular/router'
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule, Routes } from '@angular/router';
 import { HttpModule } from '@angular/http';
+
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from '../environments/environment';
@@ -10,36 +12,37 @@ import { AgmCoreModule } from '@agm/core';
 
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
-import { Dashboard } from './dashboard/dashboard.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
-import { Auth } from './services/auth/auth.service';
+import { AuthService } from './services/auth/auth.service';
 import { AuthGuard } from './guards/auth/auth.guard';
-import { Auth as AuthCheck } from './auth/auth.component';
-import { TransactionsContainer } from './transactions/transactions.component';
-import { TransactionsMonzo } from './transactions/monzo/monzo.component';
-import { TransactionsOther } from './transactions/other/other.component';
-import { TransactionsAll } from './transactions/all/all.component';
-import { Spending } from './spending/spending.component';
-import { TransactionsSingle } from './transactions/single/single.component';
-import { TransactionItem } from './transactions/item/item.component';
-import { Transactions } from "./services/transactions/transactions.service";
-import { Monzo } from "./data/transaction_data";
-import { TransactionsIcon } from './transactions/icon/icon.component';
+import { AuthComponent } from './auth/auth.component';
+import { TransactionsComponent } from './transactions/transactions.component';
+import { TransactionsAllComponent } from './transactions/all/all.component';
+import { SpendingComponent } from './spending/spending.component';
+import { TransactionsSingleComponent } from './transactions/single/single.component';
+import { TransactionItemComponent } from './transactions/item/item.component';
+import { TransactionsService } from './services/transactions/transactions.service';
+import {AccountService} from './services/account/account.service';
+import { DepositsComponent } from './transactions/deposits/deposits.component';
+import { ExpenditureComponent } from './transactions/expenditure/expenditure.component';
+import { MerchantComponent } from './transactions/merchant/merchant.component';
 
 const routes: Routes = [
 
   {
     path: 'oauth/callback',
-    component: AuthCheck
+    component: AuthComponent
   },
   {
     path: '',
     canActivate: [AuthGuard],
     children: [
-      {path: '', component: Dashboard, pathMatch: 'full'},
-      {path: 'transactions', component: TransactionsContainer},
-      {path: 'transactions/:id', component: TransactionsSingle},
-      {path: 'spending', component: Spending}
+      {path: '', component: DashboardComponent, pathMatch: 'full'},
+      {path: 'transactions', component: TransactionsComponent},
+      {path: 'transactions/:id', component: TransactionsSingleComponent},
+      {path: 'transactions/merchant/:id', component: MerchantComponent},
+      {path: 'spending', component: SpendingComponent}
     ]
   }
 ];
@@ -48,16 +51,16 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    Dashboard,
-    AuthCheck,
-    TransactionsContainer,
-    TransactionsMonzo,
-    TransactionsOther,
-    TransactionsAll,
-    Spending,
-    TransactionsSingle,
-    TransactionItem,
-    TransactionsIcon
+    DashboardComponent,
+    AuthComponent,
+    TransactionsComponent,
+    TransactionsAllComponent,
+    SpendingComponent,
+    TransactionsSingleComponent,
+    TransactionItemComponent,
+    DepositsComponent,
+    ExpenditureComponent,
+    MerchantComponent
   ],
   imports: [
     BrowserModule,
@@ -66,16 +69,17 @@ const routes: Routes = [
       apiKey: environment.maps.api_key
     }),
     HttpModule,
+    HttpClientModule,
     RouterModule.forRoot(routes),
     BrowserAnimationsModule,
     SharedModule,
     AngularFireDatabaseModule
   ],
   providers: [
-    Auth,
+    AuthService,
     AuthGuard,
-    Transactions,
-    Monzo
+    TransactionsService,
+    AccountService
   ],
   bootstrap: [AppComponent]
 })

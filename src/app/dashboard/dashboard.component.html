@@ -26,13 +26,13 @@
         </md-card-content>
       </md-card>
 
-      <div layout="row" class="md-margin-tb">
+      <div layout="row" class="md-margin-tb" *ngIf="account.details">
         <div flex="33" layout="column">
 
           <md-card class="md-card-colored" flex>
             <md-card-content class="text-center">
               <md-icon class="icon tc-light-blue-500">account_balance</md-icon>
-              <div class="md-headline">{{ 64.54 | currency:'GBP':true }}</div>
+              <div *ngIf="account.details.balance" class="md-headline">{{ account.details.balance / 100 | currency:'GBP':true }}</div>
               <div layout="column">
                 <div class="md-subhead">Current Balance</div>
               </div>
@@ -46,7 +46,8 @@
             <md-card class="md-card-colored" flex>
               <md-card-content class="text-center">
                 <md-icon class="icon tc-amber-800">credit_card</md-icon>
-                <div class="md-headline">{{ '17.28'| currency:'GBP':true }}</div>
+                <div *ngIf="account.details.spend_today" class="md-headline">{{ account.details.spend_today / 100 | currency:'GBP':true }}</div>
+                <div *ngIf="account.details.spend_today === 0" class="md-headline">{{ 00.00 | currency:'GBP':true }}</div>
                 <div layout="column">
                   <div class="md-subhead">Today's Spend</div>
                 </div>
@@ -92,7 +93,7 @@
             <md-card-subtitle>Recent deposits received</md-card-subtitle>
             <md-divider></md-divider>
             <md-nav-list class="will-load item-list">
-              <transaction-item *ngFor="let transaction of deposits" [transaction]="transaction"></transaction-item>
+              <app-transaction-item *ngFor="let transaction of deposits" [transaction]="transaction"></app-transaction-item>
             </md-nav-list>
             <md-card-actions>
               <a md-button color="accent" class="text-upper" [routerLink]="['/transactions']">
@@ -111,7 +112,7 @@
         <md-card-subtitle>Recent transactions you've made</md-card-subtitle>
         <md-divider></md-divider>
         <md-nav-list class="will-load item-list">
-          <transaction-item *ngFor="let transaction of transactions" [transaction]="transaction"></transaction-item>
+          <app-transaction-item *ngFor="let transaction of transactions" [transaction]="transaction"></app-transaction-item>
         </md-nav-list>
         <md-card-actions>
           <a md-button color="accent" class="text-upper" [routerLink]="['/transactions']">
@@ -125,7 +126,7 @@
         <md-card-subtitle>Your spending categories this month</md-card-subtitle>
         <md-divider></md-divider>
         <md-nav-list class="will-load favorite-list">
-          <transaction-item *ngFor="let transaction of spending" [transaction]="transaction"></transaction-item>
+          <app-transaction-item *ngFor="let transaction of spending" [transaction]="transaction"></app-transaction-item>
         </md-nav-list>
         <md-divider></md-divider>
         <md-card-actions>

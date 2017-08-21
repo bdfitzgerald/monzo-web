@@ -1,0 +1,7 @@
+md-icon.material-icons, md-icon.material-icons.mat-icon {
+  background: transparent!important;
+}
+
+.paginator .mat-primary {
+  background: white!important;
+}

@@ -1,45 +1,55 @@
+// Angular Imports
 import { NgModule, } from '@angular/core';
 import { CommonModule, } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, } from '@angular/forms';
 import { FlexLayoutModule, } from '@angular/flex-layout';
+
+// Covalent Imports
 import {
-  CovalentDataTableModule, CovalentMediaModule, CovalentLoadingModule,
-  CovalentNotificationsModule, CovalentLayoutModule, CovalentMenuModule,
-  CovalentPagingModule, CovalentSearchModule, CovalentStepsModule,
+  CovalentMediaModule, CovalentLoadingModule, CovalentLayoutModule,
+  CovalentMenuModule, CovalentPagingModule, CovalentSearchModule,
   CovalentCommonModule, CovalentDialogsModule,
 } from '@covalent/core';
+
+// Material Imports
 import {
   MdButtonModule, MdCardModule, MdIconModule,
   MdListModule, MdMenuModule, MdTooltipModule,
   MdSlideToggleModule, MdInputModule, MdCheckboxModule,
   MdToolbarModule, MdSnackBarModule, MdSidenavModule,
-  MdTabsModule, MdSelectModule
+  MdTabsModule, MdSelectModule, MdPaginatorModule
 } from '@angular/material';
+
+// Chart Imports
 import { NgxChartsModule, } from '@swimlane/ngx-charts';
 
+// Flex Modules
 const FLEX_LAYOUT_MODULES: any[] = [
   FlexLayoutModule,
 ];
 
+// Angular Modules
 const ANGULAR_MODULES: any[] = [
   FormsModule, ReactiveFormsModule,
 ];
 
+// Material Modules
 const MATERIAL_MODULES: any[] = [
   MdButtonModule, MdCardModule, MdIconModule,
   MdListModule, MdMenuModule, MdTooltipModule,
   MdSlideToggleModule, MdInputModule, MdCheckboxModule,
   MdToolbarModule, MdSnackBarModule, MdSidenavModule,
-  MdTabsModule, MdSelectModule
+  MdTabsModule, MdSelectModule, MdPaginatorModule
 ];
 
+// Covalent Modules
 const COVALENT_MODULES: any[] = [
-  CovalentDataTableModule, CovalentMediaModule, CovalentLoadingModule,
-  CovalentNotificationsModule, CovalentLayoutModule, CovalentMenuModule,
-  CovalentPagingModule, CovalentSearchModule, CovalentStepsModule,
-  CovalentCommonModule, CovalentDialogsModule,
+  CovalentDialogsModule, CovalentMediaModule, CovalentLoadingModule,
+  CovalentLayoutModule, CovalentMenuModule, CovalentPagingModule,
+  CovalentSearchModule, CovalentCommonModule
 ];
 
+// Chart Module
 const CHART_MODULES: any[] = [
   NgxChartsModule,
 ];

@@ -1,0 +1,20 @@
+<td-layout-nav logo="assets:monzo" navigationRoute="/">
+  <td-layout-card-over *ngIf="merchant" cardTitle="{{merchant.name}}" cardSubtitle="{{merchant.description}}" cardWidth="75">
+    <img class="logo" [src]="merchant.logo" >
+    <md-card-content>
+      <div #scrollable class="scrollable">
+        <md-nav-list *tdLoading="'merchant'; mode:'indeterminate'; type:'circle'; strategy:'replace'; color:'accent'">
+          <app-transaction-item *ngFor="let transaction of transactions" [transaction]="transaction"></app-transaction-item>
+        </md-nav-list>
+      </div>
+      <md-divider></md-divider>
+      <md-paginator class="paginator"
+                    [length]="length"
+                    [pageSize]="pageSize"
+                    [pageSizeOptions]="pageSizeOptions"
+                    (page)="pageChange($event)">
+      </md-paginator>
+  </md-card-content>
+
+  </td-layout-card-over>
+</td-layout-nav>

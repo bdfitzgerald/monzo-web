@@ -112,3 +112,7 @@ agm-map.sebm-google-map-container {
     float: left;
     width: 32px;
 }
+
+.paginator .mat-primary {
+  background: white!important;
+}

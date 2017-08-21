@@ -6,9 +6,9 @@
 export const environment = {
   production: false,
   monzo: {
-    client_id: 'oauthclient_00009LXbEjWwPsmAKL40S9',
-    client_secret: 'dfzAtx+SigeGhFrLH1Qtkh8HrJNXVtG+VdBfVYsgCBbcMlpiHTpt/kr0E94D/fzqed6oDq5k1IgFFhA0gx4v',
-    client_secret_encoded: 'dfzAtx%2BSigeGhFrLH1Qtkh8HrJNXVtG%2BVdBfVYsgCBbcMlpiHTpt%2Fkr0E94D%2Ffzqed6oDq5k1IgFFhA0gx4v',
+    client_id: 'oauthclient_00009Ne4to5EY4iq4pznd3',
+    client_secret: 'DhS/agtWiqoMeiTawb2vQfj/R1GI15AddYH4AMBD1OWues9KfQxR0hsfx69VmBieM02uqX/Ih4+7Rg1VJI/q',
+    client_secret_encoded: 'DhS%2FagtWiqoMeiTawb2vQfj%2FR1GI15AddYH4AMBD1OWues9KfQxR0hsfx69VmBieM02uqX%2FIh4%2B7Rg1VJI%2Fq',
     redirect_uri: 'http://localhost:4200/oauth/callback',
     redirect_uri_encoded: 'http%3A%2F%2Flocalhost%3A4200%2Foauth%2Fcallback',
     api_url: 'https://api.monzo.com/',

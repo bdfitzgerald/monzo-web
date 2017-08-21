@@ -4,15 +4,15 @@ import { TransactionsService } from '../../services/transactions/transactions.se
 import { PageEvent } from '@angular/material';
 
 @Component({
-  selector: 'app-transactions-all',
-  templateUrl: './all.component.html',
-  styleUrls: ['./all.component.scss']
+  selector: 'app-expenditure',
+  templateUrl: './expenditure.component.html',
+  styleUrls: ['./expenditure.component.scss']
 })
-export class TransactionsAllComponent implements OnInit {
+export class ExpenditureComponent implements OnInit {
 
   @ViewChild('scrollable') scrollable: ElementRef;
+  expenditures = [];
   transactions: any = [];
-  allTransactions: any = [];
   length: number;
   pageSize = 10;
   pageSizeOptions = [5, 10, 25, 50, 100];
@@ -24,41 +24,39 @@ export class TransactionsAllComponent implements OnInit {
 
   ngOnInit() {
     if (this.transactions.length === 0) {
-      this._loadingService.register ( 'all' );
+      this._loadingService.register ( 'expenditures' );
       this.initialTransactions();
-      this.transactions = this.allTransactions.slice(0, this.pageSize);
-      this.length = this.allTransactions.length;
-      this._loadingService.resolve ( 'all' );
+      this.transactions = this.expenditures.slice(0, this.pageSize);
+      this.length = this.expenditures.length;
+      this._loadingService.resolve ( 'expenditures' );
       console.log(this.scrollable);
     }
   }
 
   pageChange(ev: PageEvent) {
-    console.log(this.allTransactions);
+    const page = ev.pageIndex + 1;
     const start = ev.pageIndex * ev.pageSize;
     const end = start + ev.pageSize;
-    this.transactions = this.allTransactions.slice(start, end);
+    this.transactions = this.expenditures.slice(start, end);
     this.scrollable.nativeElement.scrollTop = 0;
   }
 
   initialTransactions() {
-    this.allTransactions = this.transactionsData.all;
+    for ( const transaction of this.transactionsData.all ) {
+      if (transaction.merchant && !transaction.metadata.is_topup ) {
+        this.expenditures.push(transaction);
+      }
+    }
   }
 
   search(filter: any) {
     this.initialTransactions();
     // if the value is an empty string don't filter the items
     if (filter && filter.trim() !== '' ) {
-      this.allTransactions = this.allTransactions.filter((transaction) => {
-        if ( transaction.merchant ) {
-          return (transaction.merchant.name.toLowerCase ().indexOf (filter.toLowerCase ()) > -1 ||
-            transaction.category.toLowerCase ().indexOf (filter.toLowerCase ()) > -1);
-        } else {
-          return false;
-        }
-      });
-      this.transactions = this.allTransactions.slice(0, this.pageSize);
-      this.length = this.allTransactions.length;
+      this.transactions = this.transactions.filter((transaction) => {
+        return (transaction.title.toLowerCase().indexOf(filter.toLowerCase()) > -1 ||
+          transaction.category.toLowerCase().indexOf(filter.toLowerCase()) > -1);
+      })
     }
   }
 

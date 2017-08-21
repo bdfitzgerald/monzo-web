@@ -5,11 +5,9 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './spending.component.html',
   styleUrls: ['./spending.component.scss']
 })
-export class Spending implements OnInit {
+export class SpendingComponent implements OnInit {
 
   months: any;
-
-  view: any[] = [700, 400];
 
   colorSchemeUnder = {
     domain: ['#14233c', '#03a9f4', '#5AA454']

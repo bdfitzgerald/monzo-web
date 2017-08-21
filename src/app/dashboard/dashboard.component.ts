@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import {AccountService} from '../services/account/account.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class Dashboard implements OnInit {
+
+export class DashboardComponent implements OnInit {
 
   showXAxis = true;
   showYAxis = true;
@@ -22,53 +24,53 @@ export class Dashboard implements OnInit {
   multi = [
 
     {
-      "name": "Budget",
-      "series": [
+      'name': 'Budget',
+      'series': [
         {
-          "name": "Dec",
-          "value": 410.00
+          'name': 'Dec',
+          'value': 410.00
         },
         {
-          "name": "Jan",
-          "value": 280.00
+          'name': 'Jan',
+          'value': 280.00
         },
         {
-          "name": "Feb",
-          "value": 280.00
+          'name': 'Feb',
+          'value': 280.00
         },
         {
-          "name": "Mar",
-          "value": 350.00
+          'name': 'Mar',
+          'value': 350.00
         },
         {
-          "name": "Apr",
-          "value": 370.00
+          'name': 'Apr',
+          'value': 370.00
         }
       ]
     },
 
     {
-      "name": "Spend",
-      "series": [
+      'name': 'Spend',
+      'series': [
         {
-          "name": "Dec",
-          "value": 470.00
+          'name': 'Dec',
+          'value': 470.00
         },
         {
-          "name": "Jan",
-          "value": 245.66
+          'name': 'Jan',
+          'value': 245.66
         },
         {
-          "name": "Feb",
-          "value": 258.33
+          'name': 'Feb',
+          'value': 258.33
         },
         {
-          "name": "Mar",
-          "value": 423.89
+          'name': 'Mar',
+          'value': 423.89
         },
         {
-          "name": "Apr",
-          "value": 346.58
+          'name': 'Apr',
+          'value': 346.58
         }
       ]
     }
@@ -161,11 +163,14 @@ export class Dashboard implements OnInit {
     }
   ];
 
-  constructor() { }
+  public balance: number;
 
-
+  constructor(
+    public account: AccountService
+  ) { }
 
   ngOnInit() {
+
   }
 
 }

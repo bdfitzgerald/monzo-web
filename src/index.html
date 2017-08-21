@@ -9,6 +9,19 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
+<script>
+  /*(function () {
+    // Retrieve the URL the user was trying to access when receiving the 404.
+    var redirect = sessionStorage.redirect;
+    // Remove the URL from sessionStorage.
+    delete sessionStorage.redirect;
+    // Check if we actually need to redirect.
+    if (redirect && redirect != location.href) {
+      // We need to redirect to the URL the user was trying to access.
+      history.replaceState(null, null, redirect);
+    }
+  })();*/
+</script>
   <app-root>
     <div style="position: absolute; top: 0; bottom: 0; height: 100vh; width: 100vw; background:#14233C; text-align:center;">
       <img style="padding-top: 20%;" src="assets/icons/monzo-inverse.svg">

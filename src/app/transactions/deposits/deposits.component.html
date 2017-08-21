@@ -6,11 +6,10 @@
           <md-card-title>All Transactions</md-card-title>
           <md-card-subtitle>Transactions made from all accounts</md-card-subtitle>
         </div>
-        <td-search-box backIcon="arrow_forward" placeholder="Search Transactions..." [showUnderline]="true" [alwaysVisible]="false" (searchDebounce)="search($event)"></td-search-box>
       </div>
       <md-divider></md-divider>
       <div #scrollable class="scrollable">
-        <md-nav-list *tdLoading="'all'; mode:'indeterminate'; type:'circle'; strategy:'replace'; color:'accent'">
+        <md-nav-list *tdLoading="'deposits'; mode:'indeterminate'; type:'circle'; strategy:'replace'; color:'accent'">
           <app-transaction-item *ngFor="let transaction of transactions" [transaction]="transaction"></app-transaction-item>
         </md-nav-list>
       </div>

@@ -1,8 +1,15 @@
-<a [routerLink]="['/transactions/1']" *ngIf="transaction.include_in_spending">
-  <md-list-item layout-align="row" class="price-list coloured">
-  
+<a [routerLink]="['/transactions/' + transaction.id]" *ngIf="transaction.merchant">
+  <md-list-item layout-align="row" class="price-list ">
+    <md-icon md-list-avatar class="bgc-white" [ngClass]="iconColor">{{icon}}</md-icon>
     <h3 md-line> {{transaction.merchant.name}} </h3>
     <h4 md-line> {{transaction.local_amount/-100 | currency:'GBP':true }} </h4>
-    <p md-line> {{transaction.notes}} </p>
+    <p md-line *ngIf="transaction.merchant.address"> {{transaction.merchant.address.short_formatted}} </p>
+  </md-list-item>
+</a>
+<a *ngIf="!transaction.merchant && transaction.metadata.is_topup">
+  <md-list-item layout-align="row" class="price-list ">
+    <md-icon md-list-avatar class="bgc-green-400 tc-white">credit_card</md-icon>
+    <h3 md-line> Top Up </h3>
+    <h4 md-line> {{transaction.local_amount/100 | currency:'GBP':true }} </h4>
   </md-list-item>
 </a>
